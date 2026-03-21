@@ -128,6 +128,17 @@
         font-size: 14px;
     }
 
+	.tech-groups {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 20px;
+	}
+
+	.tech-group h3 {
+		margin-bottom: 10px;
+		color: #38bdf8;
+	}
+
     /* FOOTER */
     footer {
         text-align: center;
@@ -216,24 +227,105 @@
     </div>
 
     <!-- SKILLS -->
-    <div class="section">
-        <h2>Tech Stack</h2>
+<div class="section">
+    <h2>Tech Stack</h2>
 
-        <div class="skills">
-            <div class="skill">.NET / C#</div>
-            <div class="skill">ASP.NET Core</div>
-            <div class="skill">REST APIs</div>
-            <div class="skill">SQL Server</div>
-            <div class="skill">Entity Framework</div>
-            <div class="skill">Azure</div>
-            <div class="skill">CI/CD</div>
-            <div class="skill">React</div>
-            <div class="skill">TypeScript</div>
-            <div class="skill">OAuth2 / OIDC</div>
-            <div class="skill">DDD</div>
-            <div class="skill">CQRS</div>
+    <div class="tech-groups">
+
+        <!-- Backend -->
+        <div class="tech-group">
+            <h3>Backend & API</h3>
+            <div class="skills">
+                <div class="skill">C# / .NET Core</div>
+                <div class="skill">ASP.NET Core</div>
+                <div class="skill">REST APIs</div>
+                <div class="skill">MVC</div>
+                <div class="skill">OpenAPI / Swagger</div>
+                <div class="skill">MediatR (CQRS)</div>
+                <div class="skill">DDD</div>
+                <div class="skill">Entity Framework</div>
+                <div class="skill">SQL Server</div>
+                <div class="skill">NoSQL / Cosmos DB</div>
+                <div class="skill">Event-driven architecture</div>
+                <div class="skill">Middleware</div>
+                <div class="skill">Dependency Injection</div>
+                <div class="skill">SOLID</div>
+                <div class="skill">WCF</div>
+            </div>
         </div>
+
+        <!-- Cloud -->
+        <div class="tech-group">
+            <h3>Cloud & DevOps</h3>
+            <div class="skills">
+                <div class="skill">Azure</div>
+                <div class="skill">Azure DevOps (CI/CD)</div>
+                <div class="skill">YAML Pipelines</div>
+                <div class="skill">Azure Functions</div>
+                <div class="skill">Azure Service Bus</div>
+                <div class="skill">Azure API Management</div>
+                <div class="skill">Azure AI Search</div>
+                <div class="skill">Azure Cache for Redis</div>
+                <div class="skill">Azure Data Factory</div>
+                <div class="skill">Docker</div>
+                <div class="skill">Bicep / IaC</div>
+                <div class="skill">Application Insights</div>
+            </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="tech-group">
+            <h3>Frontend</h3>
+            <div class="skills">
+                <div class="skill">React</div>
+                <div class="skill">TypeScript</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">Vue.js</div>
+                <div class="skill">Razor Pages</div>
+                <div class="skill">HTML / CSS</div>
+            </div>
+        </div>
+
+        <!-- Testing -->
+        <div class="tech-group">
+            <h3>Testing & Quality</h3>
+            <div class="skills">
+                <div class="skill">xUnit</div>
+                <div class="skill">NUnit</div>
+                <div class="skill">Integration Testing</div>
+                <div class="skill">Playwright</div>
+                <div class="skill">BDD (Gherkin)</div>
+                <div class="skill">Azure Load Testing</div>
+            </div>
+        </div>
+
+        <!-- Security -->
+        <div class="tech-group">
+            <h3>Security</h3>
+            <div class="skills">
+                <div class="skill">OAuth 2.0</div>
+                <div class="skill">OpenID Connect</div>
+                <div class="skill">JWT</div>
+                <div class="skill">RBAC / PBAC</div>
+                <div class="skill">Encryption / Certificates</div>
+            </div>
+        </div>
+
+        <!-- Ways of Working -->
+        <div class="tech-group">
+            <h3>Architecture & Ways of Working</h3>
+            <div class="skills">
+                <div class="skill">Clean Architecture</div>
+                <div class="skill">CQRS</div>
+                <div class="skill">Domain Driven Design</div>
+                <div class="skill">Agile / Scrum</div>
+                <div class="skill">SAFe</div>
+                <div class="skill">API-first design</div>
+            </div>
+        </div>
+
     </div>
+</div>
 
 </div>
 
