@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Movie Shopper</title>
+
+<style>
+:root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #38bdf8;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: var(--text);
+}
+
+/* ===== HEADER ===== */
+.header {
+    text-align: center;
+    padding: 60px 20px 30px;
+}
+
+.header h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.link {
+    background: rgba(56,189,248,0.15);
+    color: var(--accent);
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+
+.link:hover {
+    background: var(--accent);
+    color: black;
+}
+
+/* ===== TABS ===== */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: var(--card);
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tab-button.active {
+    background: var(--accent);
+    color: black;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ===== CONTENT ===== */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    display: grid;
+    gap: 25px;
+    padding: 20px;
+}
+
+.card {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+h2 {
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+h3 {
+    color: #7dd3fc;
+    margin-top: 15px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    margin-bottom: 8px;
+    padding-left: 18px;
+    position: relative;
+    color: var(--muted);
+}
+
+ul li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.highlight {
+    color: white;
+    font-weight: bold;
+}
+
+/* ===== COLLAPSIBLE ===== */
+.collapsible {
+    cursor: pointer;
+    padding: 10px;
+    background: rgba(56,189,248,0.1);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.collapsible:hover {
+    background: rgba(56,189,248,0.2);
+}
+
+.collapsible-content {
+    display: none;
+}
+
+.collapsible.active + .collapsible-content {
+    display: block;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Movie Shopper</h1>
+    <p>Fullstack system demonstrating modern architecture, clean design, and scalable patterns</p>
+
+    <div class="links">
+        <a href="https://movie-shopper-web-app-bma9d8axdzfxfcbw.norwayeast-01.azurewebsites.net/swagger/index.html" class="link" target="_blank" rel="noopener noreferrer">Swagger API</a>
+        <a href="https://thankful-cliff-0ae322703.6.azurestaticapps.net/" class="link" target="_blank" rel="noopener noreferrer">Frontend App</a>
+        <a href="https://github.com/perresoderberg/MovieSearchShopping-backend" class="link" target="_blank" rel="noopener noreferrer">Backend Repo</a>
+        <a href="https://github.com/perresoderberg/MovieSearchShopping-frontend" class="link" target="_blank" rel="noopener noreferrer">Frontend Repo</a>
+    </div>
+</div>
+
+<!-- TABS -->
+<div class="tabs">
+    <button class="tab-button active" onclick="openTab('backend')">Backend</button>
+    <button class="tab-button" onclick="openTab('frontend')">Frontend</button>
+</div>
+
+<!-- BACKEND -->
+<div id="backend" class="tab-content active">
+<div class="container">
+
+<div class="card">
+    <h2>Functional Overview</h2>
+    <div class="collapsible">Click to expand</div>
+    <div class="collapsible-content">
+		<h3>Main Features</h3>
+
+		<h4>1. Movie Search</h4>
+		<ul>
+			<li>Search is triggered after a minimum of 3 characters to reduce unnecessary requests</li>
+			<li>Debounced input ensures queries are only sent when the user pauses typing, improving performance and user experience</li>
+			<li>Results are retrieved from the local database when available, with fallback to <span class="highlight">TMDB</span> for extended coverage</li>
+			<li>Optimized for fast, responsive lookups with minimal backend load</li>
+		</ul>
+
+		<h4>2. Movie Details</h4>
+		<ul>
+			<li>Displays comprehensive movie information including cast, reviews, and metadata</li>
+			<li>Missing data is lazy-loaded from external APIs to avoid unnecessary initial load</li>
+			<li>Combines local persistence with external enrichment for a complete user experience</li>
+		</ul>
+
+		<h4>3. Advanced Search</h4>
+		<ul>
+			<li>Supports filtering across multiple dimensions for precise querying</li>
+			<li>Filter options include:
+				<ul>
+					<li>Year of release</li>
+					<li>Rating</li>
+					<li>Popularity</li>
+					<li>Genres</li>
+				</ul>
+			</li>
+			<li>Designed to support complex queries while maintaining performance</li>
+		</ul>
+
+		<h4>4. Catalog</h4>
+		<ul>
+			<li>Enables full browsing of the movie database</li>
+			<li>Supports paging, sorting, and editing of entries</li>
+			<li>Concurrency-safe updates implemented using <span class="highlight">ETag</span> to prevent conflicting changes</li>
+			<li>Optimized for scalability when handling large datasets</li>
+		</ul>
+
+		<h4>5. Favorites & User Flow</h4>
+		<ul>
+			<li>Users can add or remove movies as favorites directly from the UI</li>
+			<li>When authenticated, users gain access to a dedicated profile/favorites page</li>
+			<li>Favorites are persisted per user for a personalized experience</li>
+			<li>From the profile/favorites page, users can add movies to a cart</li>
+			<li>When items are added to the cart, a badge is displayed on the cart icon showing the current number of items</li>
+			<li>This creates a seamless flow from discovery → favorites → cart</li>
+		</ul>
+
+		<h4>6. Actor Pages</h4>
+		<ul>
+			<li>Dedicated pages for actors with detailed information</li>
+			<li>Includes filmography with sorting capabilities</li>
+			<li>Provides easy navigation between actors and related movies</li>
+		</ul>
+
+		<h4>7. Authentication</h4>
+		<ul>
+			<li>Authentication handled via <span class="highlight">Google Login</span></li>
+			<li>Secure access to user-specific features such as profile, favorites, and cart</li>
+			<li>Follows modern authentication practices (OAuth2/OpenID Connect)</li>
+		</ul>
+
+		<h4>8. Cart</h4>
+		<ul>
+			<li>Supports adding selected movies from the favorites/profile page</li>
+			<li>Cart state is reflected in real-time via a badge indicator in the UI</li>
+			<li>Designed for future extensions such as checkout, payments, or rentals</li>
+		</ul>
+    </div>
+</div>
+
+    <div class="card">
+        <h2>CI/CD & Deployment</h2>
+        <ul>
+            <li>Automated backend pipeline triggered on merge to <span class="highlight">main</span> after approved Pull Request</li>
+            <li>Build, test, and deployment to <span class="highlight">Azure App Service</span></li>
+            <li>Frontend pipeline deploying to <span class="highlight">Azure Static Web Apps</span></li>
+            <li>Environment-specific configuration handled via secure variables</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Azure Resources</h2>
+        <ul>
+            <li><span class="highlight">Azure App Service</span> for hosting backend API</li>
+            <li><span class="highlight">Azure Static Web Apps</span> for frontend hosting</li>
+            <li><span class="highlight">Azure SQL Database</span> for persistent storage</li>
+            <li><span class="highlight">Azure Key Vault</span> for secrets and credentials</li>
+            <li><span class="highlight">Azure Application Insights</span> for monitoring and logging</li>
+            <li><span class="highlight">Azure Storage Account</span> for supporting infrastructure</li>
+        </ul>
+    </div>
+
+	<div class="card">
+		<h2>Architecture & Design Principles</h2>
+		<ul>
+			<li>Built using <span class="highlight">Clean Architecture</span> to ensure clear separation of concerns and long-term maintainability</li>
+			<li>Applies <span class="highlight">Domain-Driven Design (DDD)</span> with focus on core business concepts, aggregates, and ubiquitous language</li>
+			<li>Implements <span class="highlight">CQRS</span> to separate read and write concerns, improving scalability and flexibility</li>
+			<li>Strict separation between Domain, Application, Infrastructure, and Presentation layers</li>
+			<li>Dependency inversion ensures the domain remains independent of frameworks, databases, and external systems</li>
+			<li>Encapsulation of business rules within domain entities to <span class="highlight">enforce invariants</span> and consistency</li>
+			<li>Favors composition over inheritance to promote flexibility and reduce coupling</li>
+			<li>Supports unit and integration testing through clear boundaries</li>
+		</ul>
+	</div>
+
+	<div class="card">
+		<h2>Configuration Management</h2>
+		<p>
+			Configuration is structured using strongly typed option classes mapped from 
+			<span class="highlight">appsettings.json</span>. These are injected using 
+			<span class="highlight">IOptions&lt;T&gt;</span>, ensuring a clean and maintainable approach to configuration handling.
+		</p>
+		<ul>
+			<li>Type-safe and easy to maintain, reducing runtime errors caused by invalid configuration values</li>
+			<li>Centralized and consistent across the application</li>
+			<li>Supports validation of configuration at startup to catch issues early</li>
+			<li>Environment-specific configuration (e.g., Development, Staging, Production)</li>
+			<li>Avoids hardcoded values, improving flexibility and deployment portability</li>
+			<li>Easy to extend with new settings without impacting existing functionality</li>
+		</ul>
+	</div>
+
+    <div class="card">
+        <h2>Security</h2>
+
+        <h3>Authentication & Authorization</h3>
+        <ul>
+            <li>Uses <span class="highlight">JWT (JSON Web Tokens)</span> for stateless authentication</li>
+            <li>Supports <span class="highlight">OAuth2 / OpenID Connect</span> flows</li>
+            <li>External identity providers implemented via abstraction layer</li>
+            <li>Currently supports <span class="highlight">Google login</span>, with extensibility for Microsoft and BankID</li>
+        </ul>
+
+        <h3>Token Strategy</h3>
+        <ul>
+            <li>Short-lived <span class="highlight">Access Tokens</span> (10 minutes)</li>
+            <li>Long-lived <span class="highlight">Refresh Tokens</span> (stored securely)</li>
+            <li>Refresh tokens are:</li>
+            <li>- Stored as <span class="highlight">hashed values</span> in database</li>
+            <li>- <span class="highlight">Rotated</span> on each use</li>
+            <li>- <span class="highlight">Revoked</span> after usage to prevent replay attacks</li>
+        </ul>
+
+        <h3>Cookie Security</h3>
+        <ul>
+            <li>Tokens stored in <span class="highlight">HTTP-only cookies</span></li>
+            <li>Configured with <span class="highlight">Secure</span> and <span class="highlight">SameSite=None</span></li>
+            <li>Prevents XSS access and supports cross-site scenarios</li>
+        </ul>
+
+        <h3>Secrets Management</h3>
+        <ul>
+            <li>No secrets stored in source code or configuration files</li>
+            <li>All sensitive data retrieved from <span class="highlight">Azure Key Vault</span></li>
+            <li>Environment variables used for runtime configuration</li>
+        </ul>
+
+        <h3>Domain-Level Security</h3>
+        <ul>
+            <li>Strongly typed IDs prevent incorrect data usage</li>
+            <li>Validation enforced at domain level ensures integrity</li>
+        </ul>
+
+    </div>
+
+    <div class="card">
+        <h2>Logging & Observability</h2>
+
+        <h3>Structured Logging</h3>
+        <ul>
+            <li>Implemented using <span class="highlight">Serilog</span></li>
+            <li>Logs are structured with contextual data for better querying</li>
+            <li>Custom logging extensions standardize log format across application</li>
+        </ul>
+
+        <h3>Log Destinations</h3>
+        <ul>
+            <li>Console logging for local development</li>
+            <li>Integrated with <span class="highlight">Azure Application Insights</span></li>
+        </ul>
+
+        <h3>Request Tracing</h3>
+        <ul>
+            <li>Automatic request logging via middleware</li>
+            <li>Includes request path, response status, and execution time</li>
+            <li>Correlation using trace identifiers for distributed tracing</li>
+        </ul>
+
+        <h3>Custom Telemetry</h3>
+        <ul>
+            <li>Custom traces sent using <span class="highlight">TelemetryClient</span></li>
+            <li>Used for tracking key application flows and important events</li>
+        </ul>
+
+        <h3>Debugging & Diagnostics</h3>
+        <ul>
+            <li>Detailed logs for external API calls and database operations</li>
+            <li>Supports troubleshooting production issues efficiently</li>
+        </ul>
+
+    </div>
+
+    <div class="card">
+        <h2>Error Handling</h2>
+
+        <h3>Global Exception Handling</h3>
+        <ul>
+            <li>Centralized middleware catches all unhandled exceptions</li>
+            <li>Prevents leaking internal details to clients</li>
+            <li>Logs full exception details to Application Insights</li>
+        </ul>
+
+        <h3>Standardized Error Responses</h3>
+        <ul>
+            <li>Uses <span class="highlight">ProblemDetails (RFC 7807)</span> for all error responses</li>
+            <li>Consistent structure across the entire API</li>
+            <li>Includes status code, title, and error details</li>
+        </ul>
+
+        <h3>Result Pattern</h3>
+        <ul>
+            <li>All operations return <span class="highlight">Result&lt;T&gt;</span> instead of throwing exceptions</li>
+            <li>Separates success and failure explicitly</li>
+            <li>Improves readability and control flow</li>
+        </ul>
+
+        <h3>Error Categorization</h3>
+        <ul>
+            <li>Custom error codes (e.g. NotFound, Unauthorized, ExternalServiceFailure)</li>
+            <li>Mapped to appropriate HTTP status codes in controllers</li>
+        </ul>
+
+        <h3>Resilience</h3>
+        <ul>
+            <li>External API failures handled gracefully</li>
+            <li>Retry and circuit breaker policies reduce cascading failures</li>
+        </ul>
+
+        <h3>Fail-Fast & Validation</h3>
+        <ul>
+            <li>Input validation using <span class="highlight">FluentValidation</span></li>
+            <li>Invalid requests rejected early in the pipeline</li>
+            <li>Domain invariants prevent invalid state</li>
+        </ul>
+
+    </div>
+    <div class="card">
+        <h2>Presentation Layer</h2>
+
+        <h3>General API Design</h3>
+        <ul>
+            <li>Built using <span class="highlight">ASP.NET Core Web API</span></li>
+            <li>Follows <span class="highlight">RESTful principles</span> with resource-based endpoints</li>
+            <li>Endpoints are versioned using <span class="highlight">query string versioning</span></li>
+            <li>Fully documented using <span class="highlight">Swagger / OpenAPI</span></li>
+        </ul>
+
+        <h3>Controller Design</h3>
+        <ul>
+            <li>Controllers are intentionally kept <span class="highlight">thin</span></li>
+            <li>All business logic is delegated to application services</li>
+            <li>Controllers are responsible for:</li>
+            <li>- Request mapping</li>
+            <li>- Response formatting</li>
+            <li>- Translating domain results into HTTP responses</li>
+        </ul>
+
+        <h3>Validation</h3>
+        <ul>
+            <li>Input validation implemented using <span class="highlight">FluentValidation</span></li>
+            <li>Validation is automatically triggered via pipeline integration</li>
+            <li>Ensures invalid requests are rejected early</li>
+        </ul>
+
+        <h3>DTO Design</h3>
+        <ul>
+            <li>Clear separation between <span class="highlight">Request DTOs</span> and <span class="highlight">Response DTOs</span></li>
+            <li>No domain entities exposed directly to clients</li>
+            <li>DTOs implemented as <span class="highlight">records</span> for immutability</li>
+        </ul>
+
+        <h3>Features</h3>
+        <ul>
+            <li>Supports paging, sorting, and filtering on list endpoints</li>
+            <li>ETag-based concurrency support in update operations</li>
+            <li>Consistent response handling via centralized <span class="highlight">Result pattern</span></li>
+        </ul>
+
+        <h3>Middleware</h3>
+        <ul>
+            <li>Custom middleware for:</li>
+            <li>- Global exception handling</li>
+            <li>- API version enforcement</li>
+            <li>- Request logging</li>
+        </ul>
+
+    </div>
+
+    <div class="card">
+        <h2>Domain Layer</h2>
+
+        <h3>Core Principles</h3>
+        <ul>
+            <li>Pure domain layer with no external dependencies</li>
+            <li>Implements <span class="highlight">Domain-Driven Design</span></li>
+            <li>Encapsulates all business rules and invariants</li>
+        </ul>
+
+        <h3>Entities & Value Objects</h3>
+        <ul>
+            <li>Entities represent core business concepts (e.g. Movie, Person, User)</li>
+            <li>Value objects used to model domain concepts with validation</li>
+            <li>All invariants enforced at creation time</li>
+        </ul>
+
+        <h3>Strong Typing</h3>
+        <ul>
+            <li>Uses <span class="highlight">strongly typed IDs</span> (e.g. MovieId, PersonId)</li>
+            <li>Implemented using <span class="highlight">record struct</span></li>
+            <li>Prevents accidental misuse of primitive types</li>
+        </ul>
+
+        <h3>Immutability & Safety</h3>
+        <ul>
+            <li>Value objects are immutable</li>
+            <li>Entities expose controlled mutation through methods</li>
+            <li>Ensures domain consistency at all times</li>
+        </ul>
+
+        <h3>Error Handling</h3>
+        <ul>
+            <li>Uses <span class="highlight">Result pattern</span> instead of exceptions</li>
+            <li>Domain errors are explicit and strongly typed</li>
+            <li>Centralized error definitions for consistency</li>
+        </ul>
+
+        <h3>Benefits</h3>
+        <ul>
+            <li>Avoids <span class="highlight">primitive obsession</span></li>
+            <li>Improves readability and maintainability</li>
+            <li>Makes business logic testable and predictable</li>
+        </ul>
+
+    </div>
+
+    <div class="card">
+        <h2>Infrastructure Layer</h2>
+
+        <h3>Database & ORM</h3>
+        <ul>
+            <li>Uses <span class="highlight">Entity Framework Core</span></li>
+            <li>Code-first approach with migrations</li>
+            <li>Hosted on <span class="highlight">Azure SQL Database</span></li>
+        </ul>
+
+        <h3>Repository Pattern</h3>
+        <ul>
+            <li>Separation of <span class="highlight">Read</span> and <span class="highlight">Write repositories</span></li>
+            <li>Read repositories optimized for queries (projections, no tracking)</li>
+            <li>Write repositories handle persistence and domain updates</li>
+        </ul>
+
+        <h3>Performance Optimization</h3>
+        <ul>
+            <li>Uses <span class="highlight">AsNoTracking</span> for read queries</li>
+            <li>Projects directly to DTOs to avoid unnecessary loading</li>
+            <li>Efficient querying using LINQ and filtering</li>
+        </ul>
+
+        <h3>Concurrency Handling</h3>
+        <ul>
+            <li>Implements <span class="highlight">optimistic concurrency</span></li>
+            <li>Uses <span class="highlight">RowVersion</span> in database</li>
+            <li>Converted to <span class="highlight">ETag</span> for client communication</li>
+        </ul>
+
+		<h3>External Integrations</h3>
+		<ul>
+			<li>External APIs accessed via <span class="highlight">HttpClientFactory</span> for efficient connection management and DNS refresh handling</li>
+			<li>Resilience implemented with <span class="highlight">Polly</span> (retry, circuit breaker, timeout policies)</li>
+			<li>Retry policies and circuit breakers prevent cascading failures and improve system stability</li>
+			<li><span class="highlight">SemaphoreSlim</span> used to limit concurrent outbound requests and protect downstream services</li>
+			<li>Timeouts enforced to avoid hanging requests and resource exhaustion</li>
+			<li>Structured error handling and fallback responses for degraded external dependencies</li>
+			<li>External endpoints and policies configurable via centralized configuration</li>
+		</ul>
+
+		<h3>Caching</h3>
+		<ul>
+			<li>In-memory caching using <span class="highlight">IMemoryCache</span></li>
+			<li>Configurable TTL (Time-To-Live) to control cache duration</li>
+			<li>In a production-ready environment, this would be complemented with <span class="highlight">Cache Invalidation</span>
+			<br/>on data updates or deletions, along with version-based consistency to prevent stale data.</li>
+		</ul>
+
+        <h3>Dependency Injection</h3>
+        <ul>
+            <li>All services registered via centralized DI configuration</li>
+            <li>Loose coupling between layers via interfaces</li>
+        </ul>
+
+        <h3>Infrastructure Services</h3>
+        <ul>
+            <li>Password hashing using <span class="highlight">BCrypt</span></li>
+            <li>JWT token generation and validation</li>
+            <li>Refresh token lifecycle management</li>
+            <li>DateTime abstraction for testability</li>
+        </ul>
+
+    </div>
+
+    <div class="card">
+	<h2>Application Layer</h2>
+
+		<h3>Responsibilities</h3>
+		<ul>
+			<li>Coordinates use cases and orchestrates business workflows</li>
+			<li>Acts as a boundary between the presentation layer and domain layer</li>
+			<li>Does not contain business rules, but delegates them to the domain layer</li>
+		</ul>
+
+		<h3>Structure</h3>
+		<ul>
+			<li>Organized around use cases (e.g., commands and queries)</li>
+			<li>Uses patterns like <span class="highlight">CQRS</span> to separate read and write operations</li>
+			<li>Handlers process requests and coordinate domain entities and services</li>
+		</ul>
+
+		<h3>Validation</h3>
+		<ul>
+			<li>Input validation handled using <span class="highlight">FluentValidation</span></li>
+			<li>Ensures only valid data reaches the domain layer</li>
+			<li>Validation rules kept separate from business logic for maintainability</li>
+		</ul>
+
+		<h3>Dependency Management</h3>
+		<ul>
+			<li>Depends only on domain abstractions, not infrastructure implementations</li>
+			<li>Uses dependency injection for loose coupling and testability</li>
+		</ul>
+
+		<h3>Transaction Handling</h3>
+		<ul>
+			<li>Coordinates transactions where required (e.g., unit of work pattern)</li>
+			<li>Ensures consistency across multiple operations</li>
+		</ul>
+
+		<h3>Cross-Cutting Concerns</h3>
+		<ul>
+			<li>Logging, validation, and error handling handled via pipeline behaviors or middleware</li>
+			<li>Supports clean separation of concerns and reduces duplication</li>
+		</ul>
+
+		<h3>Mapping</h3>
+		<ul>
+			<li>DTOs mapped to domain models.</li>
+			<li>Prevents leakage of domain entities to outer layers</li>
+		</ul>
+
+	</div>
+
+</div>
+</div>
+
+<!-- FRONTEND -->
+<div id="frontend" class="tab-content">
+<div class="container">
+
+<div class="card">
+    <h2>Functional Overview</h2>
+    <div class="collapsible">Click to expand</div>
+    <div class="collapsible-content">
+		<h3>Main Features</h3>
+
+		<h4>1. Movie Search</h4>
+		<ul>
+			<li>Search is triggered after a minimum of 3 characters to reduce unnecessary requests</li>
+			<li>Debounced input ensures queries are only sent when the user pauses typing, improving performance and user experience</li>
+			<li>Results are retrieved from the local database when available, with fallback to <span class="highlight">TMDB</span> for extended coverage</li>
+			<li>Optimized for fast, responsive lookups with minimal backend load</li>
+		</ul>
+
+		<h4>2. Movie Details</h4>
+		<ul>
+			<li>Displays comprehensive movie information including cast, reviews, and metadata</li>
+			<li>Missing data is lazy-loaded from external APIs to avoid unnecessary initial load</li>
+			<li>Combines local persistence with external enrichment for a complete user experience</li>
+		</ul>
+
+		<h4>3. Advanced Search</h4>
+		<ul>
+			<li>Supports filtering across multiple dimensions for precise querying</li>
+			<li>Filter options include:
+				<ul>
+					<li>Year of release</li>
+					<li>Rating</li>
+					<li>Popularity</li>
+					<li>Genres</li>
+				</ul>
+			</li>
+			<li>Designed to support complex queries while maintaining performance</li>
+		</ul>
+
+		<h4>4. Catalog</h4>
+		<ul>
+			<li>Enables full browsing of the movie database</li>
+			<li>Supports paging, sorting, and editing of entries</li>
+			<li>Concurrency-safe updates implemented using <span class="highlight">ETag</span> to prevent conflicting changes</li>
+			<li>Optimized for scalability when handling large datasets</li>
+		</ul>
+
+		<h4>5. Favorites & User Flow</h4>
+		<ul>
+			<li>Users can add or remove movies as favorites directly from the UI</li>
+			<li>When authenticated, users gain access to a dedicated profile/favorites page</li>
+			<li>Favorites are persisted per user for a personalized experience</li>
+			<li>From the profile/favorites page, users can add movies to a cart</li>
+			<li>When items are added to the cart, a badge is displayed on the cart icon showing the current number of items</li>
+			<li>This creates a seamless flow from discovery → favorites → cart</li>
+		</ul>
+
+		<h4>6. Actor Pages</h4>
+		<ul>
+			<li>Dedicated pages for actors with detailed information</li>
+			<li>Includes filmography with sorting capabilities</li>
+			<li>Provides easy navigation between actors and related movies</li>
+		</ul>
+
+		<h4>7. Authentication</h4>
+		<ul>
+			<li>Authentication handled via <span class="highlight">Google Login</span></li>
+			<li>Secure access to user-specific features such as profile, favorites, and cart</li>
+			<li>Follows modern authentication practices (OAuth2/OpenID Connect)</li>
+		</ul>
+
+		<h4>8. Cart</h4>
+		<ul>
+			<li>Supports adding selected movies from the favorites/profile page</li>
+			<li>Cart state is reflected in real-time via a badge indicator in the UI</li>
+			<li>Designed for future extensions such as checkout, payments, or rentals</li>
+		</ul>
+    </div>
+</div>
+
+		<div class="card">
+			<h2>Frontend Architecture & Design</h2>
+			<ul>
+				<li>Built as a modern <span class="highlight">React 19 + Vite SPA</span> for fast development and optimized production builds</li>
+				<li>Feature-based folder structure (e.g. <span class="highlight">features/movies</span>, <span class="highlight">features/cart</span>) to improve scalability and maintainability</li>
+				<li>Clear separation between <span class="highlight">UI (components)</span>, <span class="highlight">data fetching (hooks)</span>, and <span class="highlight">domain models</span></li>
+				<li>Shared components and layouts centralized under <span class="highlight">shared/</span> to avoid duplication</li>
+				<li>Strong typing throughout using <span class="highlight">TypeScript strict mode</span> to reduce runtime errors</li>
+				<li>Alias-based imports (<span class="highlight">@/</span>) improve readability and avoid deep relative paths</li>
+				<li>Design favors composition and reusable components over tightly coupled page logic</li>
+			</ul>
+		</div>
+
+		<div class="card">
+			<h2>State Management & Data Fetching</h2>
+			<ul>
+				<li>Server state managed using <span class="highlight">@tanstack/react-query</span> for caching, background refetching, and request deduplication</li>
+				<li>Centralized <span class="highlight">QueryClient</span> configuration (e.g. staleTime, retry policies) ensures consistent behavior across the application</li>
+				<li>Mutations automatically invalidate queries to keep UI in sync with backend state</li>
+				<li>Client-side state handled via <span class="highlight">React Context</span> for cross-cutting concerns (Auth, Cart, Favorites)</li>
+				<li>Separation between <span class="highlight">server state</span> and <span class="highlight">UI/local state</span> avoids unnecessary complexity</li>
+				<li>Guest vs authenticated behavior handled transparently (e.g. cart stored in localStorage for guests, API for authenticated users)</li>
+				<li>Optimistic UI patterns used where appropriate to improve perceived responsiveness</li>
+			</ul>
+		</div>
+
+		<div class="card">
+			<h2>API Layer & Integration</h2>
+			<ul>
+				<li>Centralized API client abstraction built on <span class="highlight">fetch</span>, handling base URL, headers, and error handling</li>
+				<li>Automatic <span class="highlight">token refresh flow</span> implemented for expired sessions using refresh cookies</li>
+				<li>Global <span class="highlight">401 handler</span> triggers logout and redirects to authentication flow</li>
+				<li>Strongly typed API contracts generated via <span class="highlight">OpenAPI (openapi-typescript)</span></li>
+				<li>Consistent API versioning via query parameters (<span class="highlight">api-version</span>)</li>
+				<li>Error responses normalized into a unified <span class="highlight">ApiError</span> model</li>
+				<li>Support for advanced scenarios such as <span class="highlight">ETag-based concurrency</span> in update operations</li>
+			</ul>
+		</div>
+
+		<div class="card">
+			<h2>Routing & Navigation</h2>
+			<ul>
+				<li>Client-side routing implemented using <span class="highlight">React Router v7</span></li>
+				<li>Route-based code organization aligned with feature modules</li>
+				<li>Protected routes implemented via <span class="highlight">ProtectedRoute</span> component</li>
+				<li>Authentication state determines access to restricted pages (Profile, Orders, Favorites, Checkout)</li>
+				<li>URL-driven state (e.g. search queries, selected movie) enables deep linking and shareable URLs</li>
+				<li>Navigation includes dynamic UI elements such as cart badge and profile dropdown</li>
+			</ul>
+		</div>
+
+		<div class="card">
+			<h2>User Experience & Interaction Design</h2>
+			<ul>
+				<li>Debounced search input reduces unnecessary API calls and improves performance</li>
+				<li>Split-view layout allows simultaneous browsing and detail inspection</li>
+				<li>Lazy loading of additional data (e.g. cast, reviews) optimizes initial load time</li>
+				<li>Immediate feedback via loading indicators, error messages, and success states</li>
+				<li>Cart badge dynamically reflects current item count for real-time feedback</li>
+				<li>Favorites system enables quick access and personalized browsing</li>
+				<li>Graceful handling of empty states (e.g. no favorites, empty cart)</li>
+			</ul>
+		</div>
+
+		<div class="card">
+			<h2>Forms & Validation</h2>
+			<ul>
+				<li>Forms managed using <span class="highlight">react-hook-form</span> for performance and minimal re-renders</li>
+				<li>Validation implemented with <span class="highlight">Zod</span> schemas for type-safe validation rules</li>
+				<li>Custom validation logic ensures correct ranges and relationships (e.g. min/max values)</li>
+				<li>Input preprocessing and normalization (e.g. optional numbers, clamping values)</li>
+				<li>Error messages displayed inline for improved usability</li>
+			</ul>
+		</div>
+
+		<div class="card">
+			<h2>Authentication & Session Handling</h2>
+			<ul>
+				<li>Authentication handled via <span class="highlight">AuthContext</span> with centralized session management</li>
+				<li>Supports email/password login, Google OAuth, and BankID integration</li>
+				<li>Session restoration on app startup using refresh tokens</li>
+				<li>Guest data (e.g. cart) automatically merged into user account upon login</li>
+				<li>Secure cookie-based authentication (no tokens stored in localStorage)</li>
+			</ul>
+		</div>
+
+		<div class="card">
+			<h2>Performance & Optimization</h2>
+			<ul>
+				<li>Built with <span class="highlight">Vite</span> for fast dev server startup and optimized production builds</li>
+				<li>Sourcemaps enabled for debugging production issues</li>
+				<li>React Query caching reduces redundant network requests</li>
+				<li>Component-level state minimizes unnecessary re-renders</li>
+				<li>Code structured to support future lazy loading and code splitting</li>
+				<li>Efficient list rendering and sorting logic for large datasets</li>
+			</ul>
+		</div>
+
+		<div class="card">
+			<h2>Tooling & Developer Experience</h2>
+			<ul>
+				<li>Strict <span class="highlight">TypeScript</span> configuration enforces high code quality</li>
+				<li><span class="highlight">ESLint</span> and <span class="highlight">Prettier</span> ensure consistent code style</li>
+				<li>OpenAPI-based type generation keeps frontend aligned with backend contracts</li>
+				<li>Modular structure improves onboarding and long-term maintainability</li>
+				<li>Environment-based configuration using <span class="highlight">Vite env variables</span></li>
+				<li>Clear separation between development, build, and preview workflows</li>
+			</ul>
+		</div>
+
+</div>
+</div>
+
+<script>
+function openTab(tabId) {
+    document.querySelectorAll(".tab-content").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-button").forEach(b => b.classList.remove("active"));
+
+    document.getElementById(tabId).classList.add("active");
+    event.target.classList.add("active");
+}
+
+document.querySelectorAll(".collapsible").forEach(btn => {
+    btn.addEventListener("click", () => {
+        btn.classList.toggle("active");
+    });
+});
+</script>
+
+</body>
+</html>
