@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Per Söderberg | Fullstack Developer</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background: #0f172a;
+        color: #e2e8f0;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 40px 20px;
+    }
+
+    /* HERO */
+    .hero {
+        text-align: center;
+        padding: 80px 20px 60px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    .hero p {
+        font-size: 18px;
+        color: #94a3b8;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .highlight {
+        color: #38bdf8;
+    }
+
+    /* BUTTONS */
+    .buttons {
+        margin-top: 25px;
+    }
+
+    .btn {
+        display: inline-block;
+        margin: 10px;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.2s;
+    }
+
+    .btn-primary {
+        background: #38bdf8;
+        color: #0f172a;
+    }
+
+    .btn-primary:hover {
+        background: #0ea5e9;
+    }
+
+    .btn-outline {
+        border: 1px solid #38bdf8;
+        color: #38bdf8;
+    }
+
+    .btn-outline:hover {
+        background: #38bdf8;
+        color: #0f172a;
+    }
+
+    /* SECTION */
+    .section {
+        margin-top: 60px;
+    }
+
+    .section h2 {
+        margin-bottom: 20px;
+        font-size: 26px;
+    }
+
+    /* PROJECTS */
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+
+    .card {
+        background: #1e293b;
+        padding: 20px;
+        border-radius: 12px;
+        transition: 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card h3 {
+        margin-top: 0;
+    }
+
+    .links a {
+        display: inline-block;
+        margin-right: 10px;
+        color: #38bdf8;
+        text-decoration: none;
+    }
+
+    /* SKILLS */
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .skill {
+        background: #334155;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+
+    /* FOOTER */
+    footer {
+        text-align: center;
+        margin-top: 80px;
+        color: #64748b;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+    <h1>Per Söderberg</h1>
+    <p>
+        Senior <span class="highlight">.NET Developer</span> with ~20 years experience,
+        now transitioning into <span class="highlight">Fullstack (React + C#)</span>.
+        <br/>Focused on building clean APIs, strong domain models, and scalable systems.
+    </p>
+
+    <div class="buttons">
+		<a href="mailto:perre.soderberg@gmail.com?subject=Regarding your portfolio&body=Hi Per," class="btn btn-primary">Contact Me</a>
+        <a href="https://www.linkedin.com/in/per-s%C3%B6derberg-04b689b8" class="btn btn-outline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- PROJECTS -->
+    <div class="section">
+        <h2>Projects</h2>
+
+        <div class="projects">
+
+            <div class="card">
+                <h3>Movie Shopper</h3>
+                <p>
+                    Fullstack application with .NET backend and React frontend.
+                    Includes authentication, advanced movie search, favorites, and shopping cart.
+                </p>
+
+                <div class="links">
+					<a href="movie-shopper.html" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Description of the project and Source Code</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Mozzarella Mafia Restaurant</h3>
+                <p>
+                    React-based SPA exploring UI/UX, component structure, and frontend architecture.
+                    Focused on learning modern React patterns and state management.
+                </p>
+
+                <div class="links">
+                    <a href="https://gentle-sky-051ef8403.1.azurestaticapps.net/" target="_blank" rel="noopener noreferrer">Live App in Azure</a>
+                    <a href="https://github.com/perresoderberg/mozzarella-mafia-restaurant" target="_blank" rel="noopener noreferrer">Repository</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section">
+        <h2>Experience</h2>
+        <div class="card">
+            <p>
+                ~20 years of development experience across enterprise systems,
+                with the last 7+ years focused on <span class="highlight">C#/.NET and Azure</span>.
+            </p>
+
+            <p>
+                Strong background in <span class="highlight">REST APIs, SQL Server, domain modeling,
+                security (OAuth2), and system design</span>.
+            </p>
+
+            <p>
+                Recently working with React and moving toward a fullstack role,
+                while maintaining deep backend expertise.
+            </p>
+
+            <p>
+                Prefer product-oriented systems over integration-heavy event-driven architectures,
+                with focus on maintainability, performance, and business value.
+            </p>
+        </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section">
+        <h2>Tech Stack</h2>
+
+        <div class="skills">
+            <div class="skill">.NET / C#</div>
+            <div class="skill">ASP.NET Core</div>
+            <div class="skill">REST APIs</div>
+            <div class="skill">SQL Server</div>
+            <div class="skill">Entity Framework</div>
+            <div class="skill">Azure</div>
+            <div class="skill">CI/CD</div>
+            <div class="skill">React</div>
+            <div class="skill">TypeScript</div>
+            <div class="skill">OAuth2 / OIDC</div>
+            <div class="skill">DDD</div>
+            <div class="skill">CQRS</div>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Per Söderberg — Fullstack Developer
+</footer>
+
+</body>
+</html>
