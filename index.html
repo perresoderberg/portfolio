@@ -18,7 +18,11 @@
         margin: auto;
         padding: 40px 20px;
     }
-
+	
+	.section h2 {
+		text-align: center;
+	}
+	
     /* HERO */
     .hero {
         text-align: center;
@@ -86,11 +90,13 @@
     }
 
     /* PROJECTS */
-    .projects {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-    }
+	.projects {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr); /* 2 per row */
+		gap: 20px;
+		max-width: 700px; /* keeps them centered */
+		margin: 0 auto;   /* center the grid */
+	}
 
     .card {
         background: #1e293b;
@@ -174,10 +180,11 @@
 
             <div class="card">
                 <h3>Movie Shopper</h3>
-                <p>
-                    Fullstack application with .NET backend and React frontend.
-                    Includes authentication, advanced movie search, favorites, and shopping cart.
-                </p>
+				<p>
+					Fullstack application built with ASP.NET Core and React.<br/>
+					Features authentication, movie search, favorites, and a shopping cart.<br/>
+					Focused on clean API design, domain modeling, and a scalable architecture.<br/>
+				</p>
 
                 <div class="links">
 					<a href="movie-shopper.html" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Description of the project and Source Code</a>
@@ -186,10 +193,11 @@
 
             <div class="card">
                 <h3>Mozzarella Mafia Restaurant</h3>
-                <p>
-                    React-based SPA exploring UI/UX, component structure, and frontend architecture.
-                    Focused on learning modern React patterns and state management.
-                </p>
+				<p>
+					React SPA focused on modern frontend architecture and UX.<br/>
+					Built with reusable components and structured state management.<br/>
+					Explores performance, responsiveness, and clean UI design.<br/>
+				</p>
 
                 <div class="links">
                     <a href="https://gentle-sky-051ef8403.1.azurestaticapps.net/" target="_blank" rel="noopener noreferrer">Live App in Azure</a>
@@ -197,6 +205,31 @@
                 </div>
             </div>
 
+            <div class="card">
+                <h3>Game of life</h3>
+				<p>
+					Implementation of Conway’s Game of Life using WPF.<br/>
+					Designed with Clean Architecture and strong domain modeling.<br/>
+					Emphasizes separation of concerns, testability, and maintainability.<br/>
+				</p>
+
+                <div class="links">
+                    <a href="https://github.com/perresoderberg/GameOfLife" target="_blank" rel="noopener noreferrer">Repository</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Pacman</h3>
+				<p>
+					Classic Pac-Man built with a layered architecture (Domain, Application, UI).<br/>
+					Applies SOLID principles and domain-driven design.<br/>
+					Focused on game logic separation and extensibility, with planned A* pathfinding for AI.<br/>
+				</p>
+
+                <div class="links">
+                    <a href="https://github.com/perresoderberg/PacMan" target="_blank" rel="noopener noreferrer">Repository</a>
+                </div>
+            </div>
         </div>
     </div>
 
