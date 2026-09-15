@@ -1,56 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Per Söderberg | Fullstack Developer</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Per Söderberg | Fullstack Developer</title>
 
-<style>
-    body {
+    <style>
+      body {
         margin: 0;
         font-family: "Segoe UI", Tahoma, sans-serif;
         background: #0f172a;
         color: #e2e8f0;
-    }
+      }
 
-    .container {
+      .container {
         max-width: 1100px;
         margin: auto;
         padding: 40px 20px;
-    }
-	
-	.section h2 {
-		text-align: center;
-	}
-	
-    /* HERO */
-    .hero {
+      }
+
+      .section h2 {
+        text-align: center;
+      }
+
+      /* HERO */
+      .hero {
         text-align: center;
         padding: 80px 20px 60px;
-    }
+      }
 
-    .hero h1 {
+      .hero h1 {
         font-size: 42px;
         margin-bottom: 10px;
-    }
+      }
 
-    .hero p {
+      .hero p {
         font-size: 18px;
         color: #94a3b8;
         max-width: 900px;
         margin: auto;
-    }
+      }
 
-    .highlight {
+      .highlight {
         color: #38bdf8;
-    }
+      }
 
-    /* BUTTONS */
-    .buttons {
+      /* BUTTONS */
+      .buttons {
         margin-top: 25px;
-    }
+      }
 
-    .btn {
+      .btn {
         display: inline-block;
         margin: 10px;
         padding: 12px 20px;
@@ -58,337 +58,437 @@
         text-decoration: none;
         font-weight: 500;
         transition: 0.2s;
-    }
+      }
 
-    .btn-primary {
+      .btn-primary {
         background: #38bdf8;
         color: #0f172a;
-    }
+      }
 
-    .btn-primary:hover {
+      .btn-primary:hover {
         background: #0ea5e9;
-    }
+      }
 
-    .btn-outline {
+      .btn-outline {
         border: 1px solid #38bdf8;
         color: #38bdf8;
-    }
+      }
 
-    .btn-outline:hover {
+      .btn-outline:hover {
         background: #38bdf8;
         color: #0f172a;
-    }
+      }
 
-    /* SECTION */
-    .section {
+      /* SECTION */
+      .section {
         margin-top: 60px;
-    }
+      }
 
-    .section h2 {
+      .section h2 {
         margin-bottom: 20px;
         font-size: 26px;
-    }
+      }
 
-    /* PROJECTS */
-	.projects {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr); /* 2 per row */
-		gap: 20px;
-		max-width: 1200px; /* keeps them centered */
-		margin: 0 auto;   /* center the grid */
-	}
+      /* PROJECTS */
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 per row */
+        gap: 20px;
+        max-width: 1200px; /* keeps them centered */
+        margin: 0 auto; /* center the grid */
+      }
 
-    .card {
+      .card {
         background: #1e293b;
         padding: 20px;
         border-radius: 12px;
         transition: 0.2s;
-    }
+      }
 
-    .card:hover {
+      .card:hover {
         transform: translateY(-5px);
-    }
+      }
 
-    .card h3 {
+      .card h3 {
         margin-top: 0;
-    }
+      }
 
-    .links a {
+      .links a {
         display: inline-block;
         margin-right: 10px;
         color: #38bdf8;
         text-decoration: none;
-    }
+      }
 
-    /* SKILLS */
-    .skills {
+      /* SKILLS */
+      .skills {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-    }
+      }
 
-    .skill {
+      .skill {
         background: #334155;
         padding: 8px 12px;
         border-radius: 6px;
         font-size: 14px;
-    }
+      }
 
-	.tech-groups {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 20px;
-	}
+      .tech-groups {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
 
-	.tech-group h3 {
-		margin-bottom: 10px;
-		color: #38bdf8;
-	}
+      .tech-group h3 {
+        margin-bottom: 10px;
+        color: #38bdf8;
+      }
 
-    /* FOOTER */
-    footer {
+      /* FOOTER */
+      footer {
         text-align: center;
         margin-top: 80px;
         color: #64748b;
-    }
-</style>
-</head>
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
+    <div class="hero">
+      <h1>Per Söderberg</h1>
+      <p>
+        Senior <span class="highlight">.NET Developer</span> with ~20 years
+        experience, now transitioning into
+        <span class="highlight">Fullstack (React + C#)</span>. <br />Focused on
+        building clean APIs, strong domain models, and scalable systems.
+      </p>
 
-<div class="hero">
-    <h1>Per Söderberg</h1>
-    <p>
-        Senior <span class="highlight">.NET Developer</span> with ~20 years experience,
-        now transitioning into <span class="highlight">Fullstack (React + C#)</span>.
-        <br/>Focused on building clean APIs, strong domain models, and scalable systems.
-    </p>
-
-    <div class="buttons">
-		<a href="mailto:perre.soderberg@gmail.com?subject=Regarding your portfolio&body=Hi Per," class="btn btn-primary">Contact Me</a>
-        <a href="https://www.linkedin.com/in/per-s%C3%B6derberg-04b689b8" class="btn btn-outline" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <div class="buttons">
+        <a
+          href="mailto:perre.soderberg@gmail.com?subject=Regarding your portfolio&body=Hi Per,"
+          class="btn btn-primary"
+          >Contact Me</a
+        >
+        <a
+          href="https://www.linkedin.com/in/per-s%C3%B6derberg-04b689b8"
+          class="btn btn-outline"
+          target="_blank"
+          rel="noopener noreferrer"
+          >LinkedIn</a
+        >
+      </div>
     </div>
-</div>
 
-<div class="container">
-
-    <!-- PROJECTS -->
-    <div class="section">
+    <div class="container">
+      <!-- PROJECTS -->
+      <div class="section">
         <h2>Projects</h2>
 
         <div class="projects">
+          <div class="card">
+            <h3><span class="highlight">Movie Shopper</span></h3>
+            <p>
+              Fullstack application built with an ASP.NET Core backend and a
+              React frontend. <br /><br />
 
-            <div class="card">
-                <h3><span class="highlight">Movie Shopper</span></h3>
-				<p>
-					Fullstack application built with an ASP.NET Core backend and a React frontend. <br/><br/>
+              The system includes authentication, advanced movie search,
+              favorites management, and a shopping cart. <br /><br />
 
-					The system includes authentication, advanced movie search, favorites management, and a shopping cart. <br/><br/>
+              The backend is designed with a strong focus on clean API design,
+              domain modeling, and separation of concerns, while the frontend
+              emphasizes a structured component architecture and clear data
+              flow. <br /><br />
 
-					The backend is designed with a strong focus on clean API design, domain modeling, and separation of concerns, 
-					while the frontend emphasizes a structured component architecture and clear data flow. <br/><br/>
+              The project demonstrates how to build a scalable and maintainable
+              fullstack solution with a clear boundary between business logic
+              and presentation.
+            </p>
 
-					The project demonstrates how to build a scalable and maintainable fullstack solution with a clear boundary 
-					between business logic and presentation.
-				</p>
-
-                <div class="links">
-					<a href="movie-shopper.html" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Description of the project and Source Code</a>
-                </div>
+            <div class="links">
+              <a
+                href="movie-shopper.html"
+                class="btn btn-outline"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Description of the project and Source Code</a
+              >
             </div>
+          </div>
+          <div class="card">
+            <h3><span class="highlight">Wiki Voyage</span></h3>
 
-            <div class="card">
-                <h3><span class="highlight">Mozzarella Mafia Restaurant</span></h3>
-				<p>
-					A React-based single page application focused on exploring modern frontend development practices. <br/><br/>
+            <p>
+              A React and TypeScript application for exploring entities and
+              their relationships using data from Wikipedia, Wikidata, and
+              Wikimedia Commons. <br /><br />
 
-					The project is structured around reusable components, clear separation of concerns, and predictable state management. <br/><br/>
+              The application demonstrates modern frontend development with
+              <span class="highlight"
+                >React, TypeScript, Vite, and Tailwind CSS</span
+              >, with a component-based architecture and strongly typed data
+              models. <br /><br />
 
-					It emphasizes UI/UX, responsiveness, and maintainable component design while experimenting with different ways 
-					of structuring frontend applications. <br/><br/>
+              Wikidata data is retrieved dynamically using
+              <span class="highlight">SPARQL</span>, while Wikipedia and
+              Wikimedia Commons provide additional content and images.
+              <br /><br />
 
-					The goal of the project is to deepen understanding of React architecture and how to build clean and scalable frontend systems.
-				</p>
+              The application includes multiple entity types, reusable
+              information components, navigation paths, source tabs, image
+              galleries, and a customizable theme system.
+            </p>
 
-                <div class="links">
-                    <a href="https://gentle-sky-051ef8403.1.azurestaticapps.net/" target="_blank" rel="noopener noreferrer">Live App in Azure</a>
-                    <a href="https://github.com/perresoderberg/mozzarella-mafia-restaurant" target="_blank" rel="noopener noreferrer">Repository</a>
-                </div>
+            <div class="links">
+              <a
+                href="https://jolly-desert-0090d2903.6.azurestaticapps.net/"
+                class="btn btn-outline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live App in Azure
+              </a>
+
+              <a
+                href="https://github.com/perresoderberg/wiki-voyage"
+                class="btn btn-outline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Repository
+              </a>
             </div>
+          </div>
+          <div class="card">
+            <h3><span class="highlight">Mozzarella Mafia Restaurant</span></h3>
+            <p>
+              A React-based single page application focused on exploring modern
+              frontend development practices. <br /><br />
 
-            <div class="card">
-                <h3><span class="highlight">Game of life</span></h3>
-				<p>
-					An implementation of Conway’s Game of Life built with a WPF frontend. <br/><br/>
+              The project is structured around reusable components, clear
+              separation of concerns, and predictable state management.
+              <br /><br />
 
-					The project is designed with Clean Architecture in mind, ensuring a clear separation between domain logic, 
-					application flow, and presentation. <br/><br/>
+              It emphasizes UI/UX, responsiveness, and maintainable component
+              design while experimenting with different ways of structuring
+              frontend applications. <br /><br />
 
-					The domain layer is modeled using domain-driven design principles, including entities, value objects, and aggregates, 
-					where the business logic is encapsulated within the domain itself. <br/><br/>
+              The goal of the project is to deepen understanding of React
+              architecture and how to build clean and scalable frontend systems.
+            </p>
 
-					The focus of the project is maintainability, testability, and demonstrating how classic problems can be structured 
-					using modern architectural patterns.
-				</p>
-
-                <div class="links">
-                    <a href="https://github.com/perresoderberg/GameOfLife" target="_blank" rel="noopener noreferrer">Repository</a>
-                </div>
+            <div class="links">
+              <a
+                href="https://gentle-sky-051ef8403.1.azurestaticapps.net/"
+                target="_blank"
+                class="btn btn-outline"
+                rel="noopener noreferrer"
+                >Live App in Azure</a
+              >
+              <a
+                href="https://github.com/perresoderberg/mozzarella-mafia-restaurant"
+                target="_blank"
+                class="btn btn-outline"
+                rel="noopener noreferrer"
+                >Repository</a
+              >
             </div>
+          </div>
 
-            <div class="card">
-                <h3><span class="highlight">Pacman</span></h3>
-				<p>
-					A recreation of the classic Pac-Man game implemented with a layered architecture consisting of Domain, 
-					Application (orchestration), and a WPF frontend. <br/><br/>
+          <div class="card">
+            <h3><span class="highlight">Game of life</span></h3>
+            <p>
+              An implementation of Conway’s Game of Life built with a WPF
+              frontend. <br /><br />
 
-					The project follows SOLID principles and emphasizes keeping domain objects responsible for their own logic and validation. <br/><br/>
+              The project is designed with Clean Architecture in mind, ensuring
+              a clear separation between domain logic, application flow, and
+              presentation. <br /><br />
 
-					It uses domain-driven design concepts such as entities, value objects, and aggregates to model game behavior. <br/><br/>
+              The domain layer is modeled using domain-driven design principles,
+              including entities, value objects, and aggregates, where the
+              business logic is encapsulated within the domain itself.
+              <br /><br />
 
-					The architecture is designed for clarity and extensibility, with future improvements planned such as implementing 
-					ghost AI using A* pathfinding.
-				</p>
+              The focus of the project is maintainability, testability, and
+              demonstrating how classic problems can be structured using modern
+              architectural patterns.
+            </p>
 
-                <div class="links">
-                    <a href="https://github.com/perresoderberg/PacMan" target="_blank" rel="noopener noreferrer">Repository</a>
-                </div>
+            <div class="links">
+              <a
+                href="https://github.com/perresoderberg/GameOfLife"
+                target="_blank"
+                class="btn btn-outline"
+                rel="noopener noreferrer"
+                >Repository</a
+              >
             </div>
+          </div>
+
+          <div class="card">
+            <h3><span class="highlight">Pacman</span></h3>
+            <p>
+              A recreation of the classic Pac-Man game implemented with a
+              layered architecture consisting of Domain, Application
+              (orchestration), and a WPF frontend. <br /><br />
+
+              The project follows SOLID principles and emphasizes keeping domain
+              objects responsible for their own logic and validation.
+              <br /><br />
+
+              It uses domain-driven design concepts such as entities, value
+              objects, and aggregates to model game behavior. <br /><br />
+
+              The architecture is designed for clarity and extensibility, with
+              future improvements planned such as implementing ghost AI using A*
+              pathfinding.
+            </p>
+
+            <div class="links">
+              <a
+                href="https://github.com/perresoderberg/PacMan"
+                target="_blank"
+                class="btn btn-outline"
+                rel="noopener noreferrer"
+                >Repository</a
+              >
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- EXPERIENCE -->
-    <div class="section">
+      <!-- EXPERIENCE -->
+      <div class="section">
         <h2>Experience</h2>
         <div class="card">
-            <p>
-                ~20 years of development experience across enterprise systems,
-                with the last 7+ years focused on <span class="highlight">C#/.NET and Azure</span>.
-            </p>
+          <p>
+            ~20 years of development experience across enterprise systems, with
+            the last 7+ years focused on
+            <span class="highlight">C#/.NET and Azure</span>.
+          </p>
 
-            <p>
-                Strong background in <span class="highlight">REST APIs, SQL Server, domain modeling,
-                security (OAuth2), and system design</span>.
-            </p>
+          <p>
+            Strong background in
+            <span class="highlight"
+              >REST APIs, SQL Server, domain modeling, security (OAuth2), and
+              system design</span
+            >.
+          </p>
 
-            <p>
-                Recently working with React and moving toward a fullstack role,
-                while maintaining deep backend expertise.
-            </p>
+          <p>
+            Recently working with React and moving toward a fullstack role,
+            while maintaining deep backend expertise.
+          </p>
 
-            <p>
-                Prefer product-oriented systems over integration-heavy event-driven architectures,
-                with focus on maintainability, performance, and business value.
-            </p>
+          <p>
+            Prefer product-oriented systems over integration-heavy event-driven
+            architectures, with focus on maintainability, performance, and
+            business value.
+          </p>
         </div>
-    </div>
+      </div>
 
-    <!-- SKILLS -->
-<div class="section">
-    <h2>Tech Stack</h2>
+      <!-- SKILLS -->
+      <div class="section">
+        <h2>Tech Stack</h2>
 
-    <div class="tech-groups">
-
-        <!-- Backend -->
-        <div class="tech-group">
+        <div class="tech-groups">
+          <!-- Backend -->
+          <div class="tech-group">
             <h3>Backend & API</h3>
             <div class="skills">
-                <div class="skill">C# / .NET Core</div>
-                <div class="skill">ASP.NET Core</div>
-                <div class="skill">REST APIs</div>
-                <div class="skill">MVC</div>
-                <div class="skill">OpenAPI / Swagger</div>
-                <div class="skill">MediatR (CQRS)</div>
-                <div class="skill">DDD</div>
-                <div class="skill">Entity Framework</div>
-                <div class="skill">SQL Server</div>
-                <div class="skill">NoSQL / Cosmos DB</div>
-                <div class="skill">Event-driven architecture</div>
-                <div class="skill">Middleware</div>
-                <div class="skill">Dependency Injection</div>
-                <div class="skill">SOLID</div>
-                <div class="skill">WCF</div>
+              <div class="skill">C# / .NET Core</div>
+              <div class="skill">ASP.NET Core</div>
+              <div class="skill">REST APIs</div>
+              <div class="skill">MVC</div>
+              <div class="skill">OpenAPI / Swagger</div>
+              <div class="skill">MediatR (CQRS)</div>
+              <div class="skill">DDD</div>
+              <div class="skill">Entity Framework</div>
+              <div class="skill">SQL Server</div>
+              <div class="skill">NoSQL / Cosmos DB</div>
+              <div class="skill">Event-driven architecture</div>
+              <div class="skill">Middleware</div>
+              <div class="skill">Dependency Injection</div>
+              <div class="skill">SOLID</div>
+              <div class="skill">WCF</div>
             </div>
-        </div>
+          </div>
 
-        <!-- Cloud -->
-        <div class="tech-group">
+          <!-- Cloud -->
+          <div class="tech-group">
             <h3>Cloud & DevOps</h3>
             <div class="skills">
-                <div class="skill">Azure</div>
-                <div class="skill">Azure DevOps (CI/CD)</div>
-                <div class="skill">YAML Pipelines</div>
-                <div class="skill">Azure Functions</div>
-                <div class="skill">Azure Service Bus</div>
-                <div class="skill">Azure API Management</div>
-                <div class="skill">Azure AI Search</div>
-                <div class="skill">Azure Cache for Redis</div>
-                <div class="skill">Azure Data Factory</div>
-                <div class="skill">Docker</div>
-                <div class="skill">Bicep / IaC</div>
-                <div class="skill">Application Insights</div>
+              <div class="skill">Azure</div>
+              <div class="skill">Azure DevOps (CI/CD)</div>
+              <div class="skill">YAML Pipelines</div>
+              <div class="skill">Azure Functions</div>
+              <div class="skill">Azure Service Bus</div>
+              <div class="skill">Azure API Management</div>
+              <div class="skill">Azure AI Search</div>
+              <div class="skill">Azure Cache for Redis</div>
+              <div class="skill">Azure Data Factory</div>
+              <div class="skill">Docker</div>
+              <div class="skill">Bicep / IaC</div>
+              <div class="skill">Application Insights</div>
             </div>
-        </div>
+          </div>
 
-        <!-- Frontend -->
-        <div class="tech-group">
+          <!-- Frontend -->
+          <div class="tech-group">
             <h3>Frontend</h3>
             <div class="skills">
-                <div class="skill">React</div>
-                <div class="skill">TypeScript</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">Vue.js</div>
-                <div class="skill">Razor Pages</div>
-                <div class="skill">HTML / CSS</div>
+              <div class="skill">React</div>
+              <div class="skill">TypeScript</div>
+              <div class="skill">JavaScript</div>
+              <div class="skill">Vue.js</div>
+              <div class="skill">Razor Pages</div>
+              <div class="skill">HTML / CSS</div>
             </div>
-        </div>
+          </div>
 
-        <!-- Testing -->
-        <div class="tech-group">
+          <!-- Testing -->
+          <div class="tech-group">
             <h3>Testing & Quality</h3>
             <div class="skills">
-                <div class="skill">xUnit</div>
-                <div class="skill">NUnit</div>
-                <div class="skill">Integration Testing</div>
-                <div class="skill">Playwright</div>
-                <div class="skill">BDD (Gherkin)</div>
-                <div class="skill">Azure Load Testing</div>
+              <div class="skill">xUnit</div>
+              <div class="skill">NUnit</div>
+              <div class="skill">Integration Testing</div>
+              <div class="skill">Playwright</div>
+              <div class="skill">BDD (Gherkin)</div>
+              <div class="skill">Azure Load Testing</div>
             </div>
-        </div>
+          </div>
 
-        <!-- Security -->
-        <div class="tech-group">
+          <!-- Security -->
+          <div class="tech-group">
             <h3>Security</h3>
             <div class="skills">
-                <div class="skill">OAuth 2.0</div>
-                <div class="skill">OpenID Connect</div>
-                <div class="skill">JWT</div>
-                <div class="skill">RBAC / PBAC</div>
-                <div class="skill">Encryption / Certificates</div>
+              <div class="skill">OAuth 2.0</div>
+              <div class="skill">OpenID Connect</div>
+              <div class="skill">JWT</div>
+              <div class="skill">RBAC / PBAC</div>
+              <div class="skill">Encryption / Certificates</div>
             </div>
-        </div>
+          </div>
 
-        <!-- Ways of Working -->
-        <div class="tech-group">
+          <!-- Ways of Working -->
+          <div class="tech-group">
             <h3>Architecture & Ways of Working</h3>
             <div class="skills">
-                <div class="skill">Clean Architecture</div>
-                <div class="skill">CQRS</div>
-                <div class="skill">Domain Driven Design</div>
-                <div class="skill">Agile / Scrum</div>
-                <div class="skill">SAFe</div>
-                <div class="skill">API-first design</div>
+              <div class="skill">Clean Architecture</div>
+              <div class="skill">CQRS</div>
+              <div class="skill">Domain Driven Design</div>
+              <div class="skill">Agile / Scrum</div>
+              <div class="skill">SAFe</div>
+              <div class="skill">API-first design</div>
             </div>
+          </div>
         </div>
-
+      </div>
     </div>
-</div>
 
-</div>
-
-<footer>
-    © 2026 Per Söderberg — Fullstack Developer
-</footer>
-
-</body>
+    <footer>© 2026 Per Söderberg — Fullstack Developer</footer>
+  </body>
 </html>
